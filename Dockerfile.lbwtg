@@ -1,0 +1,22 @@
+# Use the official Go image as the base image
+FROM golang:latest
+
+# Set labels for the Docker image
+LABEL maintainer="Picky Butani <pickybutani@gmail.com>"
+LABEL app.name="lbwtg-app"
+LABEL app.version="1.0"
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the local code into the container
+COPY . .
+
+# Build the Go application
+RUN go build -o lbwtg .
+
+# Expose port 8080 for the application
+EXPOSE 8090
+
+# Command to run the application
+CMD ["./lbwtg"]

@@ -1,0 +1,14 @@
+# Use busybox directly
+FROM busybox:latest
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy a simple HTML file (index.html) to serve
+COPY index.html .
+
+# Expose port 80 for the web server
+EXPOSE 80
+
+# Command to start the web server
+CMD ["httpd", "-f", "-h", "/app", "-p", "80"]
